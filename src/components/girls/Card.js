@@ -5,7 +5,7 @@ import Images from './Image'
 
 export default class Cards extends Component {
   render() {
-    const {src, href, name, age, position, nationality} = this.props
+    const {src, href, name, age} = this.props
     return (
       <Card fluid>
         <Images src={src}/>
@@ -15,11 +15,8 @@ export default class Cards extends Component {
               {name}
             </a>
           </Card.Header>
-          <Card.Meta textAlign='center'>
-            {nationality}
-          </Card.Meta>
-          <Card.Description>
-            <Profile name={name} age={age} position={position} nationality={nationality}/>
+          <Card.Description textAlign='center'>
+            <Profile name={name} age={age}/>
           </Card.Description>
         </Card.Content>
       </Card>
