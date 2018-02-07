@@ -1,69 +1,42 @@
-import React, { Component } from 'react'
-import Cards from './components/girls/Card'
+import React from 'react'
 import { Grid } from 'semantic-ui-react'
+import {
+  BrowserRouter as Router,
+  Route } from 'react-router-dom'
+import Nav from './components/nav/Navigation'
+import Ex from './components/girls/Ex'
+import Gallery from './components/gallery/Galleries'
+import Banner from './components/banner/Videos'
 
+const Exm = () => (
+  <Ex/>
+)
 
-export default class App extends Component {
+const Galleries = () => (
+  <Grid centered columns={1}>
+    <Grid.Column>
+      <Gallery/>
+    </Grid.Column>
+  </Grid>
+)
 
-  render() {
-    return (
-     <div>
-      <Grid centered columns={6} padded>
-        <Grid.Column mobile={16} tablet={8} computer={4}>
-          <Cards
-            src='/images/girls/chelsea.jpg'
-            name='Chelsea Islan'
-            age={24}
-          >
-          </Cards>
-        </Grid.Column>
-        <Grid.Column mobile={16} tablet={8} computer={4}>
-          <Cards
-            src='/images/girls/maudy.jpg'
-            name='Maudy Ayunda'
-            age={23}
-          >
-          </Cards>
-        </Grid.Column>
+const Video = () => (
+  <Banner/>
+)
 
-        <Grid.Column mobile={16} tablet={8} computer={4}>
-          <Cards
-            src='/images/girls/tatjana.jpg'
-            name='Isyana Sarasvati'
-            age={23}
-          >
-          </Cards>
-        </Grid.Column>
-      </Grid>
+const BasicExample = () => (
+<Router>
+  <Grid columns={1}>
+    <Grid.Row>
+      <Nav/>
+    </Grid.Row>
+    <Grid.Column >
+      <Route exact path='/home' component={Exm}/>
+      <Route path='/photo' component={Galleries}/>
+      <Route path='/video' component={Video}/>
+    </Grid.Column>
+</Grid>
+</Router>
+)
 
-      <Grid centered columns={6} padded>
-        <Grid.Column mobile={16} tablet={8} computer={4}>
-          <Cards
-            src='/images/girls/chelsea.jpg'
-            name='Chelsea Islan'
-            age={24}
-          >
-          </Cards>
-        </Grid.Column>
-        <Grid.Column mobile={16} tablet={8} computer={4}>
-          <Cards
-            src='/images/girls/maudy.jpg'
-            name='Maudy Ayunda'
-            age={23}
-          >
-          </Cards>
-        </Grid.Column>
-
-        <Grid.Column mobile={16} tablet={8} computer={4}>
-          <Cards
-            src='/images/girls/tatjana.jpg'
-            name='Isyana Sarasvati'
-            age={23}
-          >
-          </Cards>
-        </Grid.Column>
-      </Grid>
-     </div>
-    )
-  }
-}
+export default BasicExample
